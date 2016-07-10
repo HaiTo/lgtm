@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'lgtm/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "lgtm_fetcher"
+  spec.name          = "lgtm_in_fetcher"
   spec.version       = Lgtm::VERSION
   spec.authors       = ["HaiTo"]
   spec.email         = ["kimura@sansan.com"]
