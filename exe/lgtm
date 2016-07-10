@@ -3,7 +3,14 @@
 require 'mechanize'
 
 LGTM_LINK_BASE = 'http://lgtm.in/i'.freeze
-LGTM_HAITO_PAGE = ENV['LGTM_IN_USER_PATH'] || 'http://lgtm.in/l/HaiTo'
+NOT_SET_VALIAVLE_ALERT = "please set enviromant variable LGTM_IN_USER_PATH. example) http://lgtm.in/l/HaiTo".freeze
+
+def not_set_valiavle_alert
+  p NOT_SET_VALIAVLE_ALERT
+  exit(1)
+end
+
+LGTM_HAITO_PAGE = ENV['LGTM_IN_USER_PATH'].nil? ? not_set_valiavle_alert : ENV['LGTM_IN_USER_PATH']
 
 REFLASH_TIME = 604_800.freeze
 

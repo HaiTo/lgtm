@@ -7,5 +7,5 @@
 /pkg/
 /spec/reports/
 /tmp/
-/bin/*.time
-/bin/*.links
+/exe/*.time
+/exe/*.links
