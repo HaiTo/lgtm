@@ -3,10 +3,14 @@
 require 'mechanize'
 
 LGTM_LINK_BASE = 'http://lgtm.in/i'.freeze
-NOT_SET_VALIAVLE_ALERT = "please set enviromant variable LGTM_IN_USER_PATH. example) http://lgtm.in/l/HaiTo".freeze
+NOT_SET_VALIAVLE_ALERT_1 = "please set enviromant variable LGTM_IN_USER_PATH \n"
+NOT_SET_VALIAVLE_ALERT_2 = "lgtm.in mypage example ->  http://lgtm.in/l/HaiTo \n"
+NOT_SET_VALIAVLE_ALERT_3 = "in .bashrc, .zshrc -> export LGTM_IN_USER_PATH='http://lgtm.in/l/HaiTo' \n"
 
 def not_set_valiavle_alert
-  p NOT_SET_VALIAVLE_ALERT
+  print NOT_SET_VALIAVLE_ALERT_1
+  print NOT_SET_VALIAVLE_ALERT_2
+  print NOT_SET_VALIAVLE_ALERT_3
   exit(1)
 end
 
