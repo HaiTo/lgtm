@@ -3,7 +3,7 @@
 require 'mechanize'
 
 LGTM_LINK_BASE = 'http://lgtm.in/i'.freeze
-LGTM_HAITO_PAGE = ENV['LGTM_IN_USER_PATH']
+LGTM_HAITO_PAGE = ENV['LGTM_IN_USER_PATH'] || 'http://lgtm.in/l/HaiTo'
 
 REFLASH_TIME = 604_800.freeze
 
