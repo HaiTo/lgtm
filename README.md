@@ -1,16 +1,8 @@
 # Lgtm
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/lgtm`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'lgtm'
-```
 
 And then execute:
 
@@ -22,7 +14,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```bash
+## write for .bashrc or .zshrc by LGTM_IN_USER_PATH
+# example)
+# export LGTM_IN_USER_PATH='http://lgtm.in/l/HaiTo'
+
+$ lgtm
+![lgtmin_url(lgtm)](lgtm_image_url)
+
+# in osx
+$ lgtm | pbcopy 
+```
 
 ## Development
 

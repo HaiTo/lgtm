@@ -64,5 +64,5 @@ hash = link.split('/').last
 
 lgtm_markdown = LGTM_MARKDOWN.gsub('__LGTM_IMAGE_DETAILS_PATH__', "#{LGTM_MARKDOWN_DETAIL_PATH_BASE + hash}").gsub('__LGTM_IMAGE_PATH__', "#{LGTM_MARKDOWN_IMAGE_PATH_BASE + hash}")
 
-system("echo '#{lgtm_markdown}' | pbcopy")
+print lgtm_markdown
 
