@@ -14,6 +14,8 @@ module Lgtm
     CACHED_LINKS_PATH = 'cached_links.links'.freeze
     BASE_PATH = File.expand_path('..', __FILE__)
 
+    LINK_PAR_PAGE_BASE = 32.freeze
+
     LGTM_MARKDOWN = '[![LGTM](__LGTM_IMAGE_DETAILS_PATH__)](__LGTM_IMAGE_PATH__)'
     LGTM_MARKDOWN_DETAIL_PATH_BASE = 'http://lgtm.in/p/'.freeze
     LGTM_MARKDOWN_IMAGE_PATH_BASE = 'http://lgtm.in/i/'.freeze
@@ -59,8 +61,21 @@ module Lgtm
 
     def fetch_links
       agent = Mechanize.new
-      page = agent.get(@lgtm_my_page)
-      page.links.map(&:href).select {|link| link.match(LGTM_LINK_BASE) }
+      cursor = 1
+      links = []
+
+      fetch_link_per_page!(cursor, links, agent)
+    end
+
+    def fetch_link_per_page!(cursor, links, agent)
+      page = agent.get(@lgtm_my_page + "?page=#{cursor}")
+      links << page.links.map(&:href).select {|link| link.match(LGTM_LINK_BASE) }
+
+      if links.flatten!.size % LINK_PAR_PAGE_BASE == 0
+        fetch_link_per_page!(cursor + 1, links, agent)
+      end
+
+      links.flatten
     end
 
     def update_executed_at!

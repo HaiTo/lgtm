@@ -9,3 +9,5 @@
 /tmp/
 /exe/*.time
 /exe/*.links
+/lib/*.time
+/lib/*.links
