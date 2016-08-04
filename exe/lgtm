@@ -4,19 +4,26 @@ require 'thor'
 require_relative '../lib/lgtm'
 
 class Cli < Thor
-  desc 'link', 'get markdown link format'
-  def link
-    print Lgtm::In.new.fetch_lgtm_link_markdown!(mode: :link)
+  desc 'link NUMBER', 'get lgtm markdown format. you can set pick index default or 0 by random'
+  def link(picker = :random)
+    print Lgtm::In.new.fetch_lgtm_link_markdown!(:link, picker)
   end
-  
-  desc 'img', 'get image url format'
-  def image
-    print Lgtm::In.new.fetch_lgtm_link_markdown!(mode: :image)
+
+  desc 'image NUMBER', 'get image url format. you can set pick index default or 0 by random'
+  def image(picker = :random)
+    print Lgtm::In.new.fetch_lgtm_link_markdown!(:image, picker)
+  end
+
+  desc 'double', 'output of stdout to link, stderr to image url'
+  def double(picker = :random)
+    STDOUT.print Lgtm::In.new.fetch_lgtm_link_markdown!(:link, picker)
+    STDERR.print Lgtm::In.new.fetch_lgtm_link_markdown!(:image, picker)
   end
 
   map 'l' => 'link'
   map 'i' => 'image'
   map 'img' => 'image'
+  map 'd' => 'double'
 end
 
 Cli.start(ARGV)
