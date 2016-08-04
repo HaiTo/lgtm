@@ -1,6 +1,22 @@
 #! /usr/bin/env ruby
 
-require 'lgtm'
+require 'thor'
+require_relative '../lib/lgtm'
 
-print Lgtm::In.new.fetch_lgtm_link_markdown!
+class Cli < Thor
+  desc 'link', 'get markdown link format'
+  def link
+    print Lgtm::In.new.fetch_lgtm_link_markdown!(mode: :link)
+  end
+  
+  desc 'img', 'get image url format'
+  def image
+    print Lgtm::In.new.fetch_lgtm_link_markdown!(mode: :image)
+  end
 
+  map 'l' => 'link'
+  map 'i' => 'image'
+  map 'img' => 'image'
+end
+
+Cli.start(ARGV)
